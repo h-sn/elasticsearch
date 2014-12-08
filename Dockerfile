@@ -16,6 +16,9 @@ RUN \
   tar xvzf $ES_PKG_NAME.tar.gz && \
   rm -f $ES_PKG_NAME.tar.gz && \
   mv /$ES_PKG_NAME /elasticsearch
+  cd /elasticsearch && \
+  bin/plugin -install analysis-morphology -url  http://dl.bintray.com/content/imotov/elasticsearch-plugins/org/elasticsearch/elasticsearch-analysis-morphology/1.2.0/elasticsearch-analysis-morphology-1.2.0.zip && \
+  cp -r /elasticsearch/plugins /data
 
 # Define mountable directories.
 VOLUME ["/data"]
@@ -25,9 +28,6 @@ ADD config/elasticsearch.yml /elasticsearch/config/elasticsearch.yml
 
 # Define working directory.
 WORKDIR /data
-
-# Install Russian morphology
-RUN /elasticsearch/bin/plugin -install analysis-morphology -url http://dl.bintray.com/content/imotov/elasticsearch-plugins/org/elasticsearch/elasticsearch-analysis-morphology/1.2.0/elasticsearch-analysis-morphology-1.2.0.zip
 
 # Define default command.
 CMD ["/elasticsearch/bin/elasticsearch"]
