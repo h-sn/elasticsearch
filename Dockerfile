@@ -26,11 +26,11 @@ ADD config/elasticsearch.yml /elasticsearch/config/elasticsearch.yml
 # Define working directory.
 WORKDIR /data
 
-# Define default command.
-CMD ["/elasticsearch/bin/elasticsearch"]
-
 # Install Russian morphology
 RUN /elasticsearch/bin/plugin -install analysis-morphology -url http://dl.bintray.com/content/imotov/elasticsearch-plugins/org/elasticsearch/elasticsearch-analysis-morphology/1.2.0/elasticsearch-analysis-morphology-1.2.0.zip
+
+# Define default command.
+CMD ["/elasticsearch/bin/elasticsearch", "-d"]
 
 # Expose ports.
 #   - 9200: HTTP
