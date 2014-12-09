@@ -17,8 +17,7 @@ RUN \
   rm -f $ES_PKG_NAME.tar.gz && \
   mv /$ES_PKG_NAME /elasticsearch && \
   cd /elasticsearch && \
-  bin/plugin -install analysis-morphology -url  http://dl.bintray.com/content/imotov/elasticsearch-plugins/org/elasticsearch/elasticsearch-analysis-morphology/1.2.0/elasticsearch-analysis-morphology-1.2.0.zip && \
-  cp -r /elasticsearch/plugins /data
+  bin/plugin -install analysis-morphology -url  http://dl.bintray.com/content/imotov/elasticsearch-plugins/org/elasticsearch/elasticsearch-analysis-morphology/1.2.0/elasticsearch-analysis-morphology-1.2.0.zip
 
 # Define mountable directories.
 VOLUME ["/data"]
